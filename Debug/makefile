@@ -51,8 +51,11 @@ BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ART
 # All Target
 all: image-hash
 
+dependents:
+	-cd /home/jwberry/git/image-hash/Release && $(MAKE) all
+
 # Tool invocations
-image-hash: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+image-hash: $(OBJS) $(USER_OBJS) /home/jwberry/git/image-hash/Release/image-hash makefile objects.mk $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
 	g++ -L/usr/lib/x86_64-linux-gnu -o "image-hash" $(OBJS) $(USER_OBJS) $(LIBS)
@@ -65,5 +68,6 @@ clean:
 	-@echo ' '
 
 .PHONY: all clean dependents
+/home/jwberry/git/image-hash/Release/image-hash:
 
 -include ../makefile.targets

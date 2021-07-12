@@ -2,6 +2,7 @@
 #include <cstdio>
 #include <cstdlib>
 #include "md5.h"
+#include "picosha2.h"
 
 extern "C" {
     #include <jpeglib.h>
@@ -53,15 +54,24 @@ std::string compute_md5_hash(const char* file_name) {
 
 int main(int argc, char *argv[]) {
 
-    std::string hexValue;
+    std::string md5Value;
+    std::string hashValue;
 
     const char* fileName = "data/LS7_3551.JPG";
-    hexValue = compute_md5_hash(fileName);
-    cout << "Result is " << hexValue << endl;
+    md5Value = compute_md5_hash(fileName);
+    cout << "md5 result is " << md5Value << endl;
+
+    hashValue = picosha2::computeHash256(fileName);
+    cout << "hash result is " << hashValue << endl;
+
 
     fileName = "data/LS7_3552.JPG";
-    hexValue = compute_md5_hash(fileName);
-    cout << "Result is " << hexValue << endl;
+    md5Value = compute_md5_hash(fileName);
+    cout << "md5 result is " << md5Value << endl;
+
+    hashValue = picosha2::computeHash256(fileName);
+    cout << "hash result is " << hashValue << endl;
 
     return 0;
 }
+
