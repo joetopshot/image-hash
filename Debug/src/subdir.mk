@@ -5,14 +5,17 @@
 # Add inputs and outputs from these tool invocations to the build variables 
 CPP_SRCS += \
 ../src/main.cpp \
+../src/md5-a.cpp \
 ../src/md5.cpp 
 
 OBJS += \
 ./src/main.o \
+./src/md5-a.o \
 ./src/md5.o 
 
 CPP_DEPS += \
 ./src/main.d \
+./src/md5-a.d \
 ./src/md5.d 
 
 
